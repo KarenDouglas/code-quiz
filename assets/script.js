@@ -17,7 +17,8 @@ function startTimer() {
             count--
            $timer.innerText = count
         }else{
-            $timer.innerText = 0;        
+            $timer.innerText = 0; 
+            renderGameOver()       
             clearInterval(intervalID)
         }
     
@@ -136,37 +137,34 @@ correct:"primitive and reference"
     
         function nextQuestion(event){
             
-            // if (count < 0||count === 0 ||i === questions.length-1){
-            //     renderGameOver()
+           
+                if(event.target.getAttribute('data-answer')){
                 
-            // }
-            if(event.target.getAttribute('data-answer')){
-                
-                if(event.target.getAttribute('data-answer') === questions[i].correct ){
-                    score += 20
-                    event.target.style.backgroundColor = '#D7F75B'                       
-                }else{
-               
+                    if(event.target.getAttribute('data-answer') === questions[i].correct ){
+                        score += 20
+                        event.target.style.backgroundColor = '#D7F75B'                       
+                    }else{
+                   
+                            
+                            count -= 20
                         
-                        count -= 20
+                        event.target.style.backgroundColor = '#F42C04'
+                         
+                        $timer.style.color = '#000'
+                        $timer.parentElement.style.backgroundColor= '#F42C04' 
+                        setTimeout(()=> {
+                            $timer.style.color = '#D7F75B'
+                            $timer.parentElement.style.backgroundColor= '#000' 
+                        }, 300)
+                    }
+                    i++
                     
-                    event.target.style.backgroundColor = '#F42C04'
-                     
-                    $timer.style.color = '#000'
-                    $timer.parentElement.style.backgroundColor= '#F42C04' 
-                    setTimeout(()=> {
-                        $timer.style.color = '#D7F75B'
-                        $timer.parentElement.style.backgroundColor= '#000' 
-                    }, 300)
-                }
-                i++
-                
-                setTimeout(()=>{
-                    renderQuestion()
-                },500)
-                
-                
-            }
+                    setTimeout(()=>{
+                        renderQuestion()
+                    },500)
+                    
+                    
+                }          
         }   
         
         function renderGameOver(){
