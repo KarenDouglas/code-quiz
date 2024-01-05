@@ -12,6 +12,7 @@ const highScores = lsArray || []
 $timer.innerText = count
 
 function startTimer() {
+
     const intervalID = setInterval(function (){
         if(count > 0){
             count--
@@ -21,7 +22,9 @@ function startTimer() {
             renderGameOver()       
             clearInterval(intervalID)
         }
-    
+        if( i === questions.length-1){
+            clearInterval(intervalID)
+        }
         
     }, 1000)
 }
@@ -136,8 +139,10 @@ correct:"primitive and reference"
     
     
         function nextQuestion(event){
-            
-           
+            if( i === questions.length-1){
+                renderGameOver()
+            }
+
                 if(event.target.getAttribute('data-answer')){
                 
                     if(event.target.getAttribute('data-answer') === questions[i].correct ){
