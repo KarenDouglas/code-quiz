@@ -124,4 +124,7 @@ footer{
     border: var(--green) solid 1px;
     color: var(--green);
 }
-
+#timerP{
+    padding: 5px;
+    border-radius: 20px;
+}

@@ -150,7 +150,14 @@ correct:"primitive and reference"
                         
                         count -= 20
                     
-                    event.target.style.backgroundColor = '#F42C04' 
+                    event.target.style.backgroundColor = '#F42C04'
+                     
+                    $timer.style.color = '#000'
+                    $timer.parentElement.style.backgroundColor= '#F42C04' 
+                    setTimeout(()=> {
+                        $timer.style.color = '#D7F75B'
+                        $timer.parentElement.style.backgroundColor= '#000' 
+                    }, 300)
                 }
                 i++
                 
