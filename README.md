@@ -15,6 +15,7 @@ Welcome to my Coding Quiz Game repository! This project offers users an exciting
 - CSS
 - JavaScript
 - Figma
+- Local Storage
 
 ## Author
 
